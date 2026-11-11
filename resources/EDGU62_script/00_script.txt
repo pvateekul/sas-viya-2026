@@ -1,0 +1,82 @@
+============================================================
+PAGE 11: Check SAS Studio
+============================================================
+
+proc print data=sashelp.class(obs=5);
+run;
+
+proc qkb;
+    list;
+run;
+
+============================================================
+PAGE 13: prepare environment
+============================================================
+
+bash ~/01_clone_repo.sh 
+bash ~/02_populate_environment.sh
+
+============================================================
+PAGE 14: git clone on Windows Command Line
+============================================================
+
+notepad "%USERPROFILE%\03_clone_repo_windows.bat"
+copy & paste 03_clone_repo_windows.bat
+call "%USERPROFILE%\03_clone_repo_windows.bat"
+
+if successful; check "C:\dgu"
+dir C:\dgu\files\assets
+
+============================================================
+PAGE 16: activate SAS Viya Copilot
+============================================================
+
+source ~/eduvars.txt
+source /root/edu_k3dv5_win/scripts/copilot.sh status
+
+get_token
+configure_orders_api_credentials
+status
+
+------
+if false, Copilot is not activated yet.
+Continue on Page 16: SAS Environment Manager → SAS Viya Copilot → Activate → เลือก region → Continue
+
+============================================================
+PAGE 67: assign_privacy_specialists_roles.sh
+============================================================
+
+ls -l /root/eduvars.txt
+ls -l ~/dgu/files/groups/privacy_group_rules.json
+command -v sas-viya
+
+bash -n ~/assign_privacy_specialists_roles.sh
+
+-----
+
+bash ./assign_privacy_specialists_roles.sh
+
+============================================================
+PAGE 75-76: assign_sme_roles.sh (Subject Matter Expert)
+============================================================
+
+bash ./assign_sme_roles.sh
+
+============================================================
+PAGE 85: Share an Asset via URL
+============================================================
+
+server.demo.sas.com/SASInformationCatalog/details/~fs~catalog~fs~instances~fs~8a3e625c-f316-4510-b5a4-9e8074ac06e4
+
+============================================================
+PAGE 96-97: assign_glossary_admin_roles.sh
+============================================================
+
+bash ./assign_glossary_admin_roles.sh
+
+============================================================
+PAGE 99: Create term type
+============================================================
+Term Type: Privacy
+Description:
+The data subjects are identifiable if they can be directly or indirectly identified, especially by reference to an identifier such as a name, an identification number, location data, an online identifier or one of several special characteristics, which expresses the physical, physiological, genetic, mental, commercial, cultural or social identity of these natural persons. In practice, these also include all data which are or can be assigned to a person in any kind of way. For example, the telephone, credit card or personnel number of a person, account data, number plate, appearance, customer number or address are all personal data.
